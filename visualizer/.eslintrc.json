@@ -1,0 +1,9 @@
+{
+  "extends": "dherault",
+  "rules": {
+    "no-console": "off",
+    "semi-style": ["error", "first"],
+    "no-bitwise": "off",
+    "no-self-compare": "off"
+  }
+}
