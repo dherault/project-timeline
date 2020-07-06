@@ -10,8 +10,6 @@ import BinaryChart from './components/BinaryChart'
 function App() {
   const data = createFakeData()
 
-  console.log('data', data)
-
   return (
     <Container maxWidth="md">
       <Typography variant="h3" component="h1">
@@ -24,7 +22,7 @@ function App() {
   )
 }
 
-function createFakeData(nWords = 512) {
+function createFakeData(nWords = 64) {
   const nBits = 32
   const words = []
 

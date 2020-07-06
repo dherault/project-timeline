@@ -34,13 +34,13 @@ function BinaryChart({ data }) {
     <div
       className={_.root}
     >
-      {binaryData.map(b => b === '1' ? (
-        <div>
+      {binaryData.map((b, i) => b === '1' ? (
+        <div key={i}>
           <div className={_.stroke} />
           <div className={_.ceil} />
         </div>
       ) : (
-        <div>
+        <div key={i}>
           <div className={_.ceil} />
           <div className={_.stroke} />
         </div>
