@@ -49,5 +49,6 @@ while True:
     line = "Infrared light: {0}, Visible light {1} - {2}".format(infrared, visible, datetime.datetime.now())
     f = open("light.txt", "a")
     f.write(line)
+    f.write("\n")
     f.close()
     print(line)
