@@ -45,8 +45,8 @@ while True:
   # print("Full spectrum (IR + visible) light: {0}".format(full_spectrum))
   # time.sleep(1.0)
 
-  if infrared != 0 or visible != 0:
-    line = "Infrared light: {0}, Visible light {1} - {2}".format(infrared, visible, datetime.datetime.now())
+  if visible == 1:
+    line = "{0}".format(datetime.datetime.now())
     f = open("light.txt", "a")
     f.write(line)
     f.write("\n")
