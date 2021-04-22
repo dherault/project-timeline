@@ -1,42 +1,60 @@
-import React from 'react'
-import './App.css'
+import './App.css';
 
-import Box from '@material-ui/core/Box'
-import Typography from '@material-ui/core/Typography'
-import Container from '@material-ui/core/Container'
+import baseInput from './input'
 
-import BinaryChart from './components/BinaryChart'
+import { useEffect, useRef, useState } from 'react'
 
 function App() {
-  const data = createFakeData()
+  const canvasRef = useRef()
+  const [input, setInput] = useState(baseInput)
+
+  useEffect(() => {
+    draw(canvasRef.current, input)
+  }, [input])
+
+  const n = Math.sqrt(input.length)
+  console.log('n', n)
 
   return (
-    <Container maxWidth="md">
-      <Typography variant="h3" component="h1">
-        Visualizer
-      </Typography>
-      <Box mt={4}>
-        <BinaryChart data={data} />
-      </Box>
-    </Container>
-  )
+    <div className="App">
+      <textarea
+        width="100%"
+        height={64}
+        value={input}
+        onChange={event => setInput(event.currentTarget.value)}
+      />
+
+      <canvas
+        ref={canvasRef}
+        style={{
+          width: n,
+          height: n,
+        }}
+      />
+    </div>
+  );
 }
 
-function createFakeData(nWords = 64) {
-  const nBits = 32
-  const words = []
+function draw(canvas, nn) {
+  const n = Math.sqrt(nn.length)
+  canvas.width = n
+  canvas.height = n
 
-  for (let i = 0; i < nWords; i++) {
-    let word = ''
+  const _ = canvas.getContext('2d')
 
-    for (let j = 0; j < nBits; j++) {
-      word += Math.random() > 0.5 ? 1 : 0
+  _.fillStyle = 'white'
+  _.fillRect(0, 0, n, n)
+  _.fillStyle = 'black'
+
+  for (let i = 0; i < nn.length; i++) {
+    const p = nn[i];
+    const x = i % n
+    const y = Math.floor(i / n)
+
+    if (p === '1') {
+      _.fillRect(x, y, 1, 1)
     }
-
-    words.push(parseInt(word, 2).toString(16))
   }
-
-  return words
 }
 
-export default App
+export default App;
