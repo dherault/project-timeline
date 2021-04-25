@@ -1,0 +1,8 @@
+{
+  "extends": "dherault",
+  "parser": "babel-eslint",
+  "rules": {
+    "no-restricted-syntax": "off",
+    "jsx-a11y/media-has-caption": "off"
+  }
+}
